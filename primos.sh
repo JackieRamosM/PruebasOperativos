@@ -1,20 +1,21 @@
 #!/bin/bash
 
-limite=10
+limite=10000
 cont=0
 
-for ((i=2;$i<$limite;++i))
+for ((i=2;$i<=$limite;++i))
 do
 	for((j=2;$j<=$i;++j))
 	do
 #		echo $i
 		if [ $(($i%$j)) = 0 ]; then
-#			let "cont++"
-			echo "$i mod $j"
+			let "cont++"
+#			echo "$i mod $j"
 		fi
-		
 	done
-#	echo "$cont"
+	if [ $cont = 1 ]; then
+		echo $i
+	fi
 	cont=0
 
 done
