@@ -19,8 +19,8 @@ do
             euler=$euler+$(echo "scale = 20; 1/$k" | bc)
         fi
     fi
-    echo $(($i+1))
-    echo "scale = 20; $euler" | bc
+    #echo $(($i+1))
+    #echo "scale = 20; $euler" | bc
 done
 
 # Time interval in nanoseconds
@@ -30,5 +30,5 @@ S="$((T/1000000000))"
 # Milliseconds
 M="$((T/1000000))"
 
-echo "Time in milliseconds: ${M}"
-echo "Time in seconds: ${S}"
+echo "Con $limit -- Time in milliseconds: ${M}"
+#echo "Time in seconds: ${S}"
