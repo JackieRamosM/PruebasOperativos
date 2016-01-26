@@ -1,6 +1,8 @@
 #!/bin/bash
 
-limite=10000
+T="$(date +%s%N)" 
+
+limite=1000
 cont=0
 
 for ((i=2;$i<=$limite;++i))
@@ -19,4 +21,16 @@ do
 	cont=0
 
 done
+
+
+
+# Time interval in nanoseconds
+T="$(($(date +%s%N)-T))"
+# Seconds
+S="$((T/1000000000))"
+# Milliseconds
+M="$((T/1000000))"
+
+echo "Time in nanoseconds: ${M}"
+echo "Time in seconds: ${S}"
 exit
