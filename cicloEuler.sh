@@ -1,22 +1,37 @@
 #!/bin/bash
 
-./euler.sh 10
-./euler.sh 20
-./euler.sh 30
-./euler.sh 40
-./euler.sh 50
-./euler.sh 60
-./euler.sh 70
-./euler.sh 80
-./euler.sh 90
-./euler.sh 100
-./euler.sh 110
-./euler.sh 120
-./euler.sh 130
-./euler.sh 140
-./euler.sh 150
-./euler.sh 160
-./euler.sh 170
-./euler.sh 180
-./euler.sh 190
-./euler.sh 200
+while read line
+do
+    T="$(date +%s%N)"
+
+euler=0
+limit=$line
+
+for((i=0;$i<$limit;++i))
+do
+    k=1
+    if [ $i = 0 ]; then
+        euler=1
+    else
+        for((j=1;$j<=$i;++j))
+        do
+            k=$(($j*$k))
+        done
+        if [ $k != 0 ]; then
+            euler=$euler+$(echo "scale = 20; 1/$k" | bc)
+        fi
+    fi
+    #echo $(($i+1))
+    #echo "scale = 20; $euler" | bc
+done
+
+# Time interval in nanoseconds
+T="$(($(date +%s%N)-T))"
+# Seconds
+S="$((T/1000000000))"
+# Milliseconds
+M="$((T/1000000))"
+
+echo "Con $limit -- Time in milliseconds: ${M}"
+#echo "Time in seconds: ${S}"
+done < "${1:-/dev/stdin}"
