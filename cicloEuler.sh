@@ -1,8 +1,9 @@
 #!/bin/bash
 
+T="$(date +%s%N)"
 while read line
 do
-    T="$(date +%s%N)"
+    
 
 euler=0
 limit=$line
@@ -25,6 +26,12 @@ do
     #echo "scale = 20; $euler" | bc
 done
 
+
+
+echo "Con $limit -- Time in milliseconds: ${M}"
+#echo "Time in seconds: ${S}"
+done < "${1:-/dev/stdin}"
+
 # Time interval in nanoseconds
 T="$(($(date +%s%N)-T))"
 # Seconds
@@ -32,6 +39,5 @@ S="$((T/1000000000))"
 # Milliseconds
 M="$((T/1000000))"
 
-echo "Con $limit -- Time in milliseconds: ${M}"
-#echo "Time in seconds: ${S}"
-done < "${1:-/dev/stdin}"
+echo "Time in milliseconds: ${M}"
+echo "Time in seconds: ${S}"
