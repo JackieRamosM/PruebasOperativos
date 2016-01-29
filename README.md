@@ -43,3 +43,12 @@ time br -r "/path/to/cicloPrimos.sh" -i /path/to/numeros -o output
 
 
 time br -r "/path/to/cicloEuler.sh" -i /path/to/numeros -o output 
+
+#Para la lectura de multiples archivos de entrada
+
+time ./br -r /path/to/IOMultiple.sh -i "/path/to/abcd" -o output
+
+El archivo de entrada abcd contiene una lista de los input que se utilizaran en conjunto.
+Los multiples archivos de entrada van en un archivo en este caso abcd, se hace esto ingresando sus rutas absolutas en el mismo, como se encuentra en este ejemplo.
+
+
